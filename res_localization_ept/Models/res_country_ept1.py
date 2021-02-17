@@ -20,3 +20,14 @@ class ResCountryEpt(models.Model):
         return super(ResCountryEpt, self)._search(args, offset, limit, order, count=count,
                                                   access_rights_uid=access_rights_uid)
 
+
+    def search2(self, args, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
+        if args:
+            if args[0][0] == 'country':
+                dom = ['|']
+                dom.append(args[0])
+                dom.append(['c_code', 'ilike', args[0][2]])
+                args = dom
+        return super(ResCountryEpt, self)._search(args, offset, limit, order, count=count,
+                                                  access_rights_uid=access_rights_uid)
+
