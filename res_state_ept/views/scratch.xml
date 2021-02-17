@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_state_ept_tree" model="ir.ui.view">
+        <field name="name">res.state.ept.tree</field>
+        <field name="model">res.state.ept</field>
+        <field name="arch" type="xml">
+            <tree string="States">
+                <field name="state_name"/>
+                <field name="state_code"/>
+                <field name="country"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="res_state_ept_form" model="ir.ui.view">
+        <field name="name">res.state.ept.form</field>
+        <field name="model">res.state.ept</field>
+        <field name="arch" type="xml">
+            <form string="Create">
+                <sheet>
+                    <group>
+                        <field name="state_name"/>
+                        <field name="state_code"/>
+                        <field name="country"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="res_state_ept_action" model="ir.actions.act_window">
+        <field name="name">States</field>
+        <field name="res_model">res.state.ept</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new partner</p>
+        </field>
+    </record>
+    <record id="res_state_ept_search" model="ir.ui.view">
+        <field name="name">res.state.ept.search</field>
+        <field name="model">res.state.ept</field>
+        <field name="arch" type="xml">
+            <search string="search">
+                <field name="state_name"/>
+                <field name="state_code"/>
+                <filter string="Country" name="Country" context="{'group_by':'country'}"/>
+                <filter string="Active" name="active_True" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="active_False" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+    <menuitem id="res_state_ept_root" name="States"
+              sequence='1'/>
+    <menuitem id="res_state_ept_menu1" name="Localization"
+              parent="res_state_ept_root"/>
+    <menuitem id="res_state_ept_menu2" name="States"
+              parent="res_state_ept_menu1"
+              action="res_state_ept_action"/>
+</odoo>

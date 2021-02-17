@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_shift_emp_management" model="ir.ui.view">
+            <field name="name">tree.view.shift.emp.management</field>
+            <field name="model">employee.shift.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="shift"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_form_shift_emp_management" model="ir.ui.view">
+            <field name="name">form.view.shift.emp.management</field>
+            <field name="model">employee.shift.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="shift"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_search_shift_ept" model="ir.ui.view">
+            <field name="name">search.shift.ept</field>
+            <field name="model">employee.shift.ept</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="shift"/>
+                    <group>
+                        <filter string="Shift" name="group_by_shift"
+                                context="{'group_by':'shift'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_shift_management" model="ir.actions.act_window">
+            <field name="name">Shift</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.shift.ept</field>
+            <field name="view_id" ref="view_tree_shift_emp_management"/>
+        </record>
+    </data>
+</odoo>

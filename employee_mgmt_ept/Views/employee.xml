@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_employee_management" model="ir.ui.view">
+            <field name="name">tree.employee.management</field>
+            <field name="model">res.employee.mgmt.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="job_type"/>
+                    <field name="salary"/>
+                    <field name="gender"/>
+                    <field name="manager_id"/>
+                    <field name="related_user_id"/>
+                    <field name="employees_under_manager_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_employee_management" model="ir.ui.view">
+            <field name="name">form.employee.management</field>
+            <field name="model">res.employee.mgmt.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                             <field name="name"/>
+                                <field name="job_type"/>
+                                <field name="salary"/>
+                                <field name="gender"/>
+                                <field name="manager_id"/>
+                                <field name="related_user_id"/>
+                            </group>
+                            <group>
+                                <field name="dept_id" string = "Department Name"/>
+                                <field name="emp_position"/>
+                                <field name="hire_date"/>
+                                <field name="is_manager"/>
+                                <field name="shift_id"/>
+                            </group>
+                        </group>
+                        <notebook attrs ="{'invisible':[('is_manager','!=',True)]}">
+                            <page string = "Employees Under">
+                                <field name="employees_under_manager_ids" />
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_search_employee_ept" model="ir.ui.view">
+            <field name="name">search.employee.mgmt.ept</field>
+            <field name="model">res.employee.mgmt.ept</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="emp_position"/>
+                    <field name="dept_id"/>
+                    <filter name = "filter_job_type" string = "Job Type Permanent"
+                            domain = "[('job_type','=','Permanent')]"/>
+                    <filter name = "filter_job_type" string = "Job Type Ad Hoc"
+                            domain = "[('job_type','=','Ad Hoc')]"/>
+                    <group>
+                        <filter string="Department Name" name="group_by_department_name"
+                                context="{'group_by':'dept_id'}"/>
+                        <filter string="Job Type" name="group_by_job_type"
+                                context="{'group_by':'job_type'}"/>
+                        <filter string="Gender" name="group_by_gender"
+                                context="{'group_by':'gender'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_employee_management" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">res.employee.mgmt.ept</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="view_tree_employee_management"/>
+        </record>
+    </data>
+</odoo>

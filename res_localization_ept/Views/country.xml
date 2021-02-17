@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_country_ept_tree" model="ir.ui.view">
+        <field name="name">res.country.ept.tree</field>
+        <field name="model">res.country1.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Localization">
+                <field name="country"/>
+                <field name="c_code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="res_country_ept_form" model="ir.ui.view">
+        <field name="name">res.country.ept.form</field>
+        <field name="model">res.country1.ept</field>
+        <field name="arch" type="xml">
+            <form string="Country Details">
+                <sheet>
+                    <group string="Country Details">
+                        <field name="country"/>
+                        <field name="c_code"/>
+                        <notebook>
+                            <page>
+                                <field name="state_ids">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="state"/>
+                                                <field name="s_code"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="search_country_localization" model="ir.ui.view">
+        <field name="name">search.country.localization</field>
+        <field name="model">res.country1.ept</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="country"/>
+                <field name="c_code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="res_country_ept_action" model="ir.actions.act_window">
+        <field name="name">Localization</field>
+        <field name="res_model">res.country1.ept</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new partner</p>
+        </field>
+    </record>
+
+    <menuitem id="localization_ept_root"
+              name="Localization"
+              sequence='1'
+              >
+    </menuitem>
+    <menuitem id="localization_ept_menu1"
+              name="Localization"
+
+
+              parent="localization_ept_root">
+
+    </menuitem>
+    <menuitem id="localization_ept_menu2"
+              name="Country"
+
+
+              parent="localization_ept_menu1"
+              sequence="1"
+              action="res_country_ept_action">
+
+    </menuitem>
+
+</odoo>

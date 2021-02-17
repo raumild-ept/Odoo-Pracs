@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="res_country_ept_data1" model = "res.country.ept">
+            <field name="country">Canada</field>
+            <field name="c_code">CA</field>
+            <field name = "active_is">Active</field>
+        </record>
+        <record id="res_country_ept_data2" model = "res.country.ept">
+            <field name="country">Spain</field>
+            <field name="c_code">SP</field>
+            <field name = "active_is">Active</field>
+        </record>
+        <record id="res_country_ept_data3" model = "res.country.ept">
+            <field name="country">Colombia</field>
+            <field name="c_code">CO</field>
+            <field name = "active_is">Active</field>
+        </record>
+        <record id="res_country_ept_data4" model = "res.country.ept">
+            <field name="country">Croatia</field>
+            <field name="c_code">CR</field>
+            <field name = "active_is">Active</field>
+        </record>
+        <record id="res_country_ept_data5" model = "res.country.ept">
+            <field name="country">United Kingdom</field>
+            <field name="c_code">UK</field>
+            <field name = "active_is">Inactive</field>
+        </record>
+    </data>
+</odoo>

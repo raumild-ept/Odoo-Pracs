@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id = "res_partner_ept1_records_1" model = "res.partner.ept1">
+            <field name = "name">Raumil</field>
+            <field name = "birthdate">2000-12-12</field>
+            <field name = "age">20</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Kalavad Road</field>
+            <field name = "street2">Mcdonalds</field>
+            <field name = "city">Rajkot</field>
+            <field name = "state">Gujarat</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">360001</field>
+            <field name = "weight">80</field>
+            <field name = "description">I am working in emipro technology</field>
+        </record>
+
+        <record id = "res_partner_ept1_records_2" model = "res.partner.ept1">
+            <field name = "name">Hardik</field>
+            <field name = "birthdate">1990-07-10</field>
+            <field name = "age">24</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">150 ft Road</field>
+            <field name = "street2">Emperial heights</field>
+            <field name = "city">Rajkot</field>
+            <field name = "state">Gujarat</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">360005</field>
+            <field name = "weight">90</field>
+            <field name = "description">I am working in emipro technology</field>
+        </record>
+
+        <record id="res_partner_ept1_records_3" model = "res.partner.ept1">
+            <field name = "name">Rahil</field>
+            <field name = "birthdate">1997-07-15</field>
+            <field name = "age">22</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Amin Marg</field>
+            <field name = "street2">Sukhsagar</field>
+            <field name = "city">Ahmedabad</field>
+            <field name = "state">Maharastra</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">420001</field>
+            <field name = "weight">90</field>
+            <field name = "description">I am working in Microsoft</field>
+        </record>
+
+        <record id="res_partner_ept1_records_4" model = "res.partner.ept1">
+            <field name = "name">Nikita</field>
+            <field name = "birthdate">1999-07-15</field>
+            <field name = "age">22</field>
+            <field name = "gender">Female</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Sagar Road</field>
+            <field name = "street2">Mahakali Krupa</field>
+            <field name = "city">New York</field>
+            <field name = "state">New Yorl</field>
+            <field name = "country">United States</field>
+            <field name = "zipcode">120001</field>
+            <field name = "weight">100</field>
+            <field name = "description">I am working in Emipro Technologies.</field>
+        </record>
+         <record id="res_partner_ept1_records_5" model = "res.partner.ept1">
+            <field name = "name">Darshit</field>
+            <field name = "birthdate">1999-07-15</field>
+            <field name = "age">23</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Everest Park2</field>
+            <field name = "street2">Mahakali Krupa</field>
+            <field name = "city">Colorado</field>
+            <field name = "state">Colorado</field>
+            <field name = "country">Canada</field>
+            <field name = "zipcode">320001</field>
+            <field name = "weight">70</field>
+            <field name = "description">I am working in Google.</field>
+        </record>
+    </data>
+</odoo>

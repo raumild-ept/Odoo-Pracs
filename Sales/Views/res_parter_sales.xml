@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_res_partner_sales_tree" model="ir.ui.view">
+        <field name="name">res.partner.sales.tree</field>
+        <field name="model">res.partner.sales.ept</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Customers List">
+                <field name="name"/>
+                <field name="street1"/>
+                <field name="street2"/>
+                <field name="city"/>
+                <field name="state1"/>
+                <field name="country1"/>
+                <field name="zipcode"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_res_partner_sales_form" model="ir.ui.view">
+        <field name="name">res.partner.sales.form</field>
+        <field name="model">res.partner.sales.ept</field>
+        <field name="arch" type="xml">
+            <form string="Create Contact.">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="street1"/>
+                            <field name="street2"/>
+                            <field name="city"/>
+                            <field name="state1"/>
+                            <field name="country1"/>
+                            <field name="zipcode"/>
+                        </group>
+                        <group>
+                            <field name="image100" widget="image" width="100px" height="100px"/>
+                            <field name="active"/>
+                            <field name="gender"/>
+                            <field name="parent_id"/>
+                            <field name="mobile"/>
+                            <field name="phone"/>
+                            <field name="website"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Child">
+                            <field name="child_ids" widget="section_and_note_one2many">
+                                <kanban>
+                                    <field name="id"/>
+                                    <field name="name"/>
+                                    <field name="image100"/>
+                                    <field name="email"/>
+                                    <field name="mobile"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <div class="o_kanban_image">
+                                                    <img alt="Contact image"
+                                                         t-att-src="kanban_image('res.partner.sales.ept',
+                                                                                 'image100',
+                                                                                  record.id.raw_value)"/>
+                                                </div>
+                                                <div class="oe_kanban_details">
+                                                    <strong class="o_kanban_record_title">
+                                                        <field name="name"/>
+                                                    </strong>
+                                                    <div class="o_kanban_tags_section">
+                                                        <ui>
+                                                            <li>
+                                                                Email:<field name="email"/>
+                                                                Phone:<field name="phone"/>
+                                                            </li>
+                                                        </ui>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="street1"/>
+                                            <field name="street2"/>
+                                            <field name="city"/>
+                                            <field name="state1"/>
+                                            <field name="country1"/>
+                                            <field name="zipcode"/>
+                                        </group>
+                                        <group>
+                                            <field name="image100" widget="image" width="100px" height="100px"/>
+                                            <field name="active"/>
+                                            <field name="gender"/>
+                                            <field name="address_type"/>
+                                            <field name="mobile"/>
+                                            <field name="phone"/>
+                                            <field name="website"/>
+                                            <field name="email"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_res_partner_sales_search" model="ir.ui.view">
+        <field name="name">res.partner.sales.search</field>
+        <field name="model">res.partner.sales.ept</field>
+        <field name="arch" type="xml">
+            <search string="search">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="state1"/>
+                <field name="country1"/>
+
+                <group string="Group by">
+                    <filter string="Country" name="group by country" context="{'group_by':'country1'}"/>
+                    <filter string="State" name="group by state" context="{'group_by':'state1'}"/>
+                    <filter string="City" name="group by city" context="{'group_by':'city'}"/>
+                    <filter string="Address Type" name="group by Address Type" context="{'group_by':'address_type'}"/>
+                </group>
+
+                <filter string="Is Active" domain="[('active', '=', True)]" name="is_active"/>
+                <filter string="Is Not Active" domain="[('active', '=', False)]" name="is_not_active"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_res_partners_sales_ept" model="ir.actions.act_window">
+        <field name="name">Partners</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner.sales.ept</field>
+        <field name="view_mode">tree,form,search,kanban</field>
+        <field name="context">{}</field>
+        <field name="domain">[('parent_id', '=', False)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new partner</p>
+        </field>
+    </record>
+
+</odoo>

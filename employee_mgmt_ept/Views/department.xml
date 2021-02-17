@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_department_ept" model="ir.ui.view">
+            <field name="name">tree.dept.ept</field>
+            <field name="model">employee.department.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="employee_ids"/>
+                    <field name="dept_manager"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_department_ept" model="ir.ui.view">
+            <field name="name">form.dept.ept</field>
+            <field name="model">employee.department.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dept_manager"/>
+                            <notebook>
+                                <page string="Employees">
+                                    <field name="employee_ids"/>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+
+    <record id="action_open_department_ept" model="ir.actions.act_window">
+        <field name="name">Department</field>
+        <field name="res_model">employee.department.ept</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="view_id" ref="view_tree_department_ept"/>
+    </record>
+
+    <record id="view_search_department_ept" model="ir.ui.view">
+        <field name="name">search.dept.ept</field>
+        <field name="model">employee.department.ept</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>

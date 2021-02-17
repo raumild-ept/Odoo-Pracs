@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_employee_ept" model="ir.ui.view">
+            <field name="name">employee.ept.tree</field>
+            <field name="model">employee.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Employee">
+                    <field name="emp_name"/>
+                    <field name="emp_dept"/>
+                    <field name="gender"/>
+                    <field name="salary"/>
+                    <field name="job_position"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_tree_employee_ept2" model="ir.ui.view">
+            <field name="name">employee.ept.tree2</field>
+            <field name="model">employee.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Employee" >
+                    <field name="emp_name"/>
+                    <field name="emp_dept"/>
+                    <field name="gender"/>
+                    <field name="salary"/>
+                    <field name="job_position"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_form_employee_ept" model="ir.ui.view">
+            <field name="name">employee.ept.form</field>
+            <field name="model">employee.ept</field>
+            <field name="arch" type="xml">
+                <form string="Create Employee">
+                    <sheet>
+                        <group>
+                            <field name="emp_name"/>
+                            <field name="emp_dept"/>
+                            <field name="gender"/>
+                            <field name="salary"/>
+                            <field name="job_type"/>
+                            <field name="job_position"/>
+                            <field name="join_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_search_employee_ept" model="ir.ui.view">
+            <field name="name">employee.ept.search</field>
+            <field name="model">employee.ept</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="emp_name"/>
+                    <field name="emp_dept"/>
+                    <field name="job_position"/>
+                    <filter string="Male" domain="[('gender', '=', 'Male')]" name="Male"/>
+                    <filter string="Female" domain="[('gender', '=', 'Female')]" name="Female"/>
+                    <filter string="Transgender" domain="[('gender', '=', 'Transgender')]" name="Transgender"/>
+                    <filter string="Permanent Job" domain="[('job_type', '=', 'Permanent')]" name="Permanent"/>
+                    <filter string="Ad Hoc Job" domain="[('job_type', '=', 'Ad_Hoc')]" name="Ad_Hoc"/>
+                    <filter string="Gender" name="group by Gender" context="{'group_by':'gender'}"/>
+                    <filter string="Job Position" name="group by Job Position" context="{'group_by':'job_position'}"/>
+                    <filter string="Department Name" name="group by Department Name" context="{'group_by':'emp_dept'}"/>
+                    <filter string="Job Type" name="group by Job Type" context="{'group_by':'job_type'}"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_employee_ept" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.ept</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_tree_employee_ept"/>
+            <field name="help" type="xml">
+                <p>Create New Employee</p>
+            </field>
+        </record>
+        <record id="action_employee_ept2" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.ept</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_form_employee_ept"/>
+            <field name="help" type="xml">
+                <p>Create New Employee</p>
+            </field>
+        </record>
+        <menuitem id="employee_ept_root" name="Employees"
+                  sequence="1"
+                  groups="custom_user">
+        </menuitem>
+
+        <menuitem id="employee_ept_menu1" name="Management"
+                  sequence="2"
+                  parent="employee_ept_root"
+                    groups="custom_user">
+        </menuitem>
+
+        <menuitem id="employee_ept_menu2" name="Employees"
+                  sequence="3"
+                  parent="employee_ept_menu1"
+                  action="action_employee_ept2"
+                    groups="custom_user">
+        </menuitem>
+         <menuitem id="employee_ept_menu3" name="All Employees"
+                  parent="employee_ept_menu1"
+                    action="action_employee_ept"
+                   groups="custom_manager"
+                    >
+        </menuitem>
+
+    </data>
+</odoo>

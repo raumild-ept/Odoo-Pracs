@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+res_city_ept_team,res.city.ept,model_res_city_ept,sales_team.group_sale_salesman,1,1,1,1

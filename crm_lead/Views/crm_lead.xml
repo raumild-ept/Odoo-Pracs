@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_crm_lead_ept" model="ir.ui.view">
+            <field name="name">crm.lead.ept.tree</field>
+            <field name="model">crm.lead.ept</field>
+            <field name="arch" type="xml">
+                <tree string="CRM" decoration-success="state=='Won'" decoration-danger="state=='Lost'"  decoration-warning="state=='Proposition'">
+                    <field name="cust_name" />
+                    <field name="revenue"/>
+                    <field name="sales_person"/>
+                    <field name="sales_team"/>
+                    <field name="campaign"/>
+                    <field name="channel"/>
+                    <field name="state"/>
+                    <field name="won_date"/>
+                    <field name="lost_reason"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_crm_lead_ept" model="ir.ui.view">
+            <field name="name">crm.lead.ept.form</field>
+            <field name="model">crm.lead.ept</field>
+            <field name="arch" type="xml">
+                <form string="CRM">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="cust_name"/>
+                                <field name="cust_email"/>
+                                <field name="cust_phone"/>
+                                <field name="revenue"/>
+                                <field name="sales_person"/>
+                                <field name="sales_team"/>
+                            </group>
+                            <group>
+                                <field name="follow_up_date"/>
+                                <field name="campaign"/>
+                                <field name="channel"/>
+                                <field name="state" widget = "statusbar" options="{'clickable': '1'}"/>
+                                <field name="won_date" attrs="{'invisible':[('state','!=','Won')],'required': [('state','=','Won')]}" />
+                                <field name="lost_reason" attrs="{'invisible':[('state','!=','Lost')],'required': [('state','=','Lost')]}" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id = "search_crm_lead_ept" model="ir.ui.view">
+            <field name="name">search.crm.lead.ept</field>
+            <field name="model">crm.lead.ept</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name = "cust_name"/>
+                    <field name="cust_email"/>
+                    <field name="cust_phone"/>
+                    <filter name = "Channel" context = "{'group_by':'channel'}" string = "Channel"/>
+                    <filter name = "Today's Follow Ups" domain = "[('follow_up_date','=',context_today().strftime('%Y-%m-%d'))]" string = "Today's Follow Ups"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_crm_lead_ept" model="ir.actions.act_window">
+            <field name="name">CRM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="res_model">crm.lead.ept</field>
+            <field name="view_id" ref="view_tree_crm_lead_ept"/>
+            <field name="help" type="html">
+                <p>
+                    Create New CRM.
+                </p>
+            </field>
+        </record>
+        <menuitem id = "crm_lead_ept_root"
+                  name = "CRM LEAD"
+                  sequence = '1'>
+        </menuitem>
+        <menuitem id="crm_lead_ept_menu1"
+                  name = "Manage"
+                  sequence="2"
+                  parent = "crm_lead_ept_root"/>
+        <menuitem id="crm_lead_ept_menu2"
+                  name="CRM LEAD"
+                  sequence="3"
+                  parent = "crm_lead_ept_menu1"
+                    action = "action_crm_lead_ept"/>
+    </data>
+</odoo>

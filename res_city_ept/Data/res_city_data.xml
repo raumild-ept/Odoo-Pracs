@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id = "res_city_data1" model = "res.city.ept">
+            <field name = "city">Rajkot</field>
+            <field name = "state">Gujarat</field>
+            <field name = "active">True</field>
+        </record>
+        <record id = "res_city_data2" model = "res.city.ept">
+            <field name = "city">Ahmedabad</field>
+            <field name = "state">Gujarat</field>
+            <field name = "active">True</field>
+        </record>
+        <record id = "res_city_data3" model = "res.city.ept">
+            <field name = "city">Jamnagar</field>
+            <field name = "state">Gujarat</field>
+            <field name = "active">True</field>
+        </record>
+    </data>
+</odoo>

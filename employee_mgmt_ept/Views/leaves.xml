@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_leave_management" model="ir.ui.view">
+            <field name="name">tree.leave.management</field>
+            <field name="model">employee.leave.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id"/>
+                    <field name="department"/>
+                    <field name="status"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="leave_desc"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_leave_management" model="ir.ui.view">
+            <field name="name">form.leave.management</field>
+            <field name="model">employee.leave.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="department"/>
+                            <field name="status"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="leave_desc"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_search_leaves_ept" model="ir.ui.view">
+            <field name="name">search.leaves..ept</field>
+            <field name="model">employee.leave.ept</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="employee_id"/>
+                    <field name="department"/>
+
+                    <group>
+                        <filter string="Department Name" name="group_by_department_name"
+                                context="{'group_by':'department'}"/>
+                        <filter string="Employee Name" name="group_by_emp_id"
+                                context="{'group_by':'employee_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_leave_management" model="ir.actions.act_window">
+            <field name="name">Leaves</field>
+            <field name="res_model">employee.leave.ept</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="view_id" ref="view_tree_leave_management"/>
+        </record>
+    </data>
+</odoo>

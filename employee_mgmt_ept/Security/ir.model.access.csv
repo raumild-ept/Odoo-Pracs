@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+res_department_user,employee.shift.ept,model_employee_shift_ept,emp_management_user,1,1,1,0
+res_shift_user,employee.leave.ept,model_employee_leave_ept,emp_management_user,1,1,1,0
+res_employee_user,employee.department.ept,model_employee_department_ept,emp_management_user,1,1,1,0
+res_leaves_user,res.employee.mgmt.ept,model_res_employee_mgmt_ept,emp_management_user,1,1,1,0
+res_department_manager,employee.shift.ept,model_employee_shift_ept,emp_management_manager,0,0,0,1
+res_shift_manager,employee.leave.ept,model_employee_leave_ept,emp_management_manager,0,0,0,1
+res_employee_manager,employee.department.ept,model_employee_department_ept,emp_management_manager,0,0,0,1
+res_leaves_manager,res.employee.mgmt.ept,model_res_employee_mgmt_ept,emp_management_manager,0,0,0,1
+res_department_dept_manager,employee.shift.ept,model_employee_shift_ept,emp_management_dept_manager,1,1,1,1
+res_shift_dept_manager,employee.leave.ept,model_employee_leave_ept,emp_management_dept_manager,1,1,1,1
+res_employee_dept_manager,employee.department.ept,model_employee_department_ept,emp_management_dept_manager,1,1,1,1
+res_leaves_dept_manager,res.employee.mgmt.ept,model_res_employee_mgmt_ept,emp_management_dept_manager,1,1,1,1
+
+

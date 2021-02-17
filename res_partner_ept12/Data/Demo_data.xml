@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="res_partners_ept_datas_1" model="res.partner.ept">
+            <field name="name">darshit</field>
+            <field name="street1">In publishing and graphic </field>
+            <field name="street2">In publishing and graphic </field>
+            <field name="city">Ahemdabad</field>
+            <field name="state">gujrat</field>
+            <field name="zip_code">360005</field>
+            <field name="country">India</field>
+            <field name="birthdate">1997-07-15</field>
+            <field name="age">22</field>
+            <field name="weight">6.77</field>
+            <field name="gender">Male</field>
+            <field name="is_spectacles"></field>
+        </record>
+        <record id="res_partners_ept_datas_2" model="res.partner.ept">
+            <field name="name">Keyur</field>
+            <field name="street1">Lorem ipsum is a</field>
+            <field name="street2">Lorem ipsum is a</field>
+            <field name="city">Rajkot</field>
+            <field name="state">gujarat</field>
+            <field name="zip_code">360005</field>
+            <field name="country">India</field>
+            <field name="birthdate">1997-07-15</field>
+            <field name="age">22</field>
+            <field name="weight">6.77</field>
+            <field name="gender">Male</field>
+            <field name="is_spectacles"></field>
+        </record>
+        <record id="res_partners_ept_datas_3" model="res.partner.ept">
+            <field name="name">john doe</field>
+            <field name="street1">placeholder before final </field>
+            <field name="street2">placeholder before final </field>
+            <field name="city">Mumbai</field>
+            <field name="state">Maharstra</field>
+            <field name="zip_code">360005</field>
+            <field name="country">India</field>
+            <field name="birthdate">1997-02-15</field>
+            <field name="age">22</field>
+            <field name="weight">6.77</field>
+            <field name="gender">Female</field>
+            <field name="is_spectacles"></field>
+        </record>
+        <record id="res_partners_ept_datas_4" model="res.partner.ept">
+            <field name="name">divyes</field>
+            <field name="street1">visual form of a </field>
+            <field name="street2">visual form of a  df</field>
+            <field name="city">Surat</field>
+            <field name="state">Maharastra</field>
+            <field name="zip_code">360005</field>
+            <field name="country">India</field>
+            <field name="birthdate">1997-07-15</field>
+            <field name="age">22</field>
+            <field name="weight">6.77</field>
+            <field name="gender">Male</field>
+            <field name="is_spectacles"></field>
+        </record>
+        <record id="res_partners_ept_datas_5" model="res.partner.ept">
+            <field name="name">John</field>
+            <field name="street1">used to demonstrate</field>
+            <field name="street2">used to demonstrate</field>
+            <field name="city">Udaipur</field>
+            <field name="state">Rajsthan</field>
+            <field name="zip_code">360005</field>
+            <field name="country">India</field>
+            <field name="birthdate">1999-07-07</field>
+            <field name="age">22</field>
+            <field name="weight">6.77</field>
+            <field name="gender">Transgender</field>
+            <field name="is_spectacles"></field>
+        </record>
+    </data>
+</odoo>

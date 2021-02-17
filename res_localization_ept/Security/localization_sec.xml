@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id = "category_custom_made_localization" model = "ir.module.category">
+        <field name = "name">Custom Category Localization</field>
+        <field name = "description">Custom Category</field>
+        <field name="sequence">1</field>
+    </record>
+
+        <record id = "res_localization_group_user" model = "res.groups">
+            <field name ="name">Localization User</field>
+            <field name="category_id" ref ="category_custom_made_localization"/>
+        </record>
+
+        <record id="res_localization_group_manager" model="res.groups">
+            <field name="name">Localization Manager</field>
+            <field name="category_id" ref="category_custom_made_localization"/>
+            <field name="implied_ids" eval="[(4,ref('res_localization_group_user'))]"/>
+        </record>
+    </data>
+</odoo>

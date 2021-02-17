@@ -1,0 +1,13 @@
+Customer name - Char required
+Customer email - Char required
+Customer phone - Char required
+Expected revenue - Float with 3 decimals
+Salesperson - Char required
+Sales Team -  Char
+Campaign - Char
+Channel - Selection (Facebook, WhatsApp, Email, Newspaper, Television, Phone Call, SMS, Google Ads, ) - required
+State - Selection (New, Qualified, Proposition, Won, Lost) - use statusbar widget with clickable option
+Next Follow Up Date - Date - required
+Won Date - make it visible only when the state is ‘won’ and make it required too
+Lost reason - make it visible only when the state is ‘lost’ and make it required too
+Views -

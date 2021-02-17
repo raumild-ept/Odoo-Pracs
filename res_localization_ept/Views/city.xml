@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_res_city_ept_tree" model="ir.ui.view">
+            <field name="name">res.city.ept.tree</field>
+            <field name="model">res.city1.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Display All Cities.">
+                    <field name="city"/>
+                    <field name="state_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="search_city_localization" model="ir.ui.view">
+            <field name="name">search.city.localization</field>
+            <field name="model">res.city1.ept</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="city"/>
+                    <field name="state_id"/>
+                    <filter name="group_by_state" string="state" context="{'group_by':'state_id'}"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_res_city_ept_form" model="ir.ui.view">
+            <field name="name">res.city.ept.form</field>
+            <field name="model">res.city1.ept</field>
+            <field name="arch" type="xml">
+                <form string="Create City.">
+                    <sheet>
+                        <group>
+                            <field name="city"/>
+                            <field name="state_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_res_city_ept" model="ir.actions.act_window">
+            <field name="name">City</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.city1.ept</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Content!! Please Create.
+                </p>
+            </field>
+        </record>
+
+        <record id="action_res_city_ept2" model="ir.actions.act_window">
+            <field name="name">City</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.city1.ept</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_res_city_ept_form"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Content!! Please Create.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_localization_city"
+                  name="City"
+                  sequence="3"
+                  parent="localization_ept_menu1"
+
+        />
+        <menuitem id="menu_city_create"
+                  name="Create"
+                  parent="menu_localization_city"
+                  action="action_res_city_ept2"/>
+        <menuitem id="menu_city_tree"
+                  name="Show"
+                  parent="menu_localization_city"
+                  action="action_res_city_ept"/>
+
+    </data>
+</odoo>

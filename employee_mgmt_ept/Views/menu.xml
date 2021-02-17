@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem id = "root_employee_management"
+                  name = "Emp MGMT"/>
+
+        <menuitem id = "menu_employee_mgmt_hr"
+                  name = "HR"
+                  parent="root_employee_management"
+        />
+        <menuitem id = "menu_hr_employees"
+                  name = "Employees"
+                  parent="menu_employee_mgmt_hr"
+        />
+        <menuitem id = "menu_hr_employees_department"
+                  name = "Department"
+                  parent="menu_hr_employees"
+                  action="action_open_department_ept"
+                  sequence = "1"
+        />
+        <menuitem id = "menu_hr_employees_employee"
+                  name = "Employee Management"
+                  parent="menu_hr_employees"
+                  action="action_employee_management"
+                  sequence = "2"
+        />
+        <menuitem id = "menu_hr_employees_shift"
+                  name = "Shift"
+                  parent="menu_hr_employees"
+                  action="action_shift_management"
+                  sequence = "3"
+        />
+        <menuitem id = "menu_hr_employees_leave"
+                  name = "Leaves"
+                  parent="menu_hr_employees"
+                  action="action_leave_management"
+                  sequence = "4"
+        />
+
+    </data>
+</odoo>

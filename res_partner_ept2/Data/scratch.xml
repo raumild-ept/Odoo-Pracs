@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id = "res_partner_ept2_records_1" model = "res.partner.ept2">
+            <field name = "name">Raumil</field>
+            <field name = "birthdate">2000-12-12</field>
+            <field name = "age">20</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Kalavad Road</field>
+            <field name = "street2">Mcdonalds</field>
+            <field name = "city">Rajkot</field>
+            <field name = "state">Gujarat</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">360001</field>
+            <field name = "weight">80</field>
+            <field name = "description">I am working in emipro technology</field>
+        </record>
+
+        <record id = "res_partner_ept2_records_2" model = "res.partner.ept2">
+            <field name = "name">Niyati</field>
+            <field name = "birthdate">1998-05-16</field>
+            <field name = "age">22</field>
+            <field name = "gender">Female</field>
+            <field name = "street1">university Road</field>
+            <field name = "street2">Emperial heights</field>
+            <field name = "city">Rajkot</field>
+            <field name = "state">Gujarat</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">360005</field>
+            <field name = "weight">60</field>
+            <field name = "description">I am working in emipro technology</field>
+        </record>
+
+        <record id="res_partner_ept2_records_3" model = "res.partner.ept2">
+            <field name = "name">Sagar</field>
+            <field name = "birthdate">1987-12-20</field>
+            <field name = "age">40</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Ambedkar Nagar</field>
+            <field name = "street2">Kalavad Road</field>
+            <field name = "city">Rajkot</field>
+            <field name = "state">Gujarat</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">360001</field>
+            <field name = "weight">90</field>
+            <field name = "description">I am working as Software Developer</field>
+        </record>
+
+        <record id="res_partner_ept2_records_4" model = "res.partner.ept2">
+            <field name = "name">Kishan</field>
+            <field name = "birthdate">1990-02-10</field>
+            <field name = "age">32</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">False</field>
+            <field name = "street1">Maharaja Road</field>
+            <field name = "street2">Saheli Road</field>
+            <field name = "city">Delhi</field>
+            <field name = "state">New Delhi</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">420001</field>
+            <field name = "weight">28</field>
+            <field name = "description">I am bodybuilder..</field>
+        </record>
+         <record id="res_partner_ept2_records_5" model = "res.partner.ept2">
+            <field name = "name">Hiren</field>
+            <field name = "birthdate">1995-01-10</field>
+            <field name = "age">29</field>
+            <field name = "gender">Male</field>
+            <field name ="is_spectacles">True</field>
+            <field name = "street1">Rajgor Road</field>
+            <field name = "street2">Krupa</field>
+            <field name = "city">Shapar</field>
+            <field name = "state">Gujarat</field>
+            <field name = "country">India</field>
+            <field name = "zipcode">320001</field>
+            <field name = "weight">70</field>
+            <field name = "description">I am working in Factory..</field>
+        </record>
+    </data>
+</odoo>

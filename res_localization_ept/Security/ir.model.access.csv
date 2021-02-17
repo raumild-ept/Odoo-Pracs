@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+res_country1_ept_team,res.country1.ept,model_res_country1_ept,res_localization_group_user,1,1,1,0
+res_state1_ept_team,res.state1.ept,model_res_state1_ept,res_localization_group_user,1,1,1,0
+res_city1_ept_team,res.city1.ept,model_res_city1_ept,res_localization_group_user,1,1,1,0
+res_country1_ept_manager,res.country1.ept,model_res_country1_ept,res_localization_group_manager,0,0,0,1
+res_state1_ept_manager,res.state1.ept,model_res_state1_ept,res_localization_group_manager,0,0,0,1
+res_city1_ept_manager,res.city1.ept,model_res_city1_ept,res_localization_group_manager,0,0,0,1
+

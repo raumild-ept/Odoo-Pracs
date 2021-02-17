@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id = "category_custom_made" model = "ir.module.category">
+        <field name = "name">Custom Category</field>
+        <field name = "description">Custom Category</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="custom_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref = "category_custom_made"/>
+        <field name = "comment">This is Users group</field>
+    </record>
+
+    <record id="custom_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref = "category_custom_made"/>
+        <field name="implied_ids" eval="[(4,ref('custom_user'))]"/>
+        <field name = "comment">This is Managers group</field>
+    </record>
+</odoo>

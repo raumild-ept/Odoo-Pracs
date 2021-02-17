@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id = "view_res_city_ept_tree" model = "ir.ui.view">
+            <field name = "name">res.city.ept.tree</field>
+            <field name = "model">res.city.ept</field>
+            <field name="arch" type = "xml">
+                <tree string = "Display All Cities." editable = "top">
+                    <field name = "city"/>
+                    <field name = "state"/>
+                    <field name = "active"/>
+                </tree>
+            </field>
+        </record>
+<!--        <record id = "view_res_city_ept_form" model = "ir.ui.view">-->
+<!--            <field name = "name">res.city.ept.form</field>-->
+<!--            <field name = "model">res.city.ept</field>-->
+<!--            <field name = "arch" type = "xml">-->
+<!--                <form string = "Create">-->
+<!--                    <field name = "city"/>-->
+<!--                    <field name = "state"/>-->
+<!--                    <field name = "active"/>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id = "view_res_city_ept_search" model = "ir.ui.view">
+            <field name = "name">res.city.ept.search</field>
+            <field name = "model">res.city.ept</field>
+            <field name = "arch" type = "xml">
+                <search string = "Search">
+                    <field name = "city"/>
+                    <field name = "state"/>
+                    <filter string = "Is Active" name = "is active" domain = "[('active','=',True)]"/>
+                    <filter string = "Is Not Active" name = "is not active" domain = "[('active','=',False)]"/>
+                    <filter string = "Group by State" name = "Group By State" context = "{'group_by':'state'}"/>
+                </search>
+            </field>
+        </record>
+        <record id = "action_res_city_ept" model = "ir.actions.act_window">
+            <field name = "name">City</field>
+            <field name = "type">ir.actions.act_window</field>
+            <field name = "res_model">res.city.ept</field>
+            <field name = "view_mode">tree,form,search</field>
+            <field name = "help" type = "html">
+                <p class = "o_view_nocontent_smiling_face">
+                    No Content!! Please Create.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id = "res_city_ept_root"
+                  name = "City"
+                  sequence = "1"
+                  groups="sales_team.group_sale_salesman"
+                  />
+        <menuitem id = "res_city_ept_menu1"
+                  name = "Localization"
+                  parent = "res_city_ept_root"
+                  groups="sales_team.group_sale_salesman"
+                  />
+        <menuitem id = "res_city_ept_menu2"
+                  name = "City"
+                  parent = "res_city_ept_menu1"
+                  groups="sales_team.group_sale_salesman"
+                  action = "action_res_city_ept"
+                  />
+
+    </data>
+</odoo>

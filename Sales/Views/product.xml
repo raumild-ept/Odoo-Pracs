@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_product_sales" model="ir.ui.view">
+            <field name="name">tree.product.sales</field>
+            <field name="model">product.ept.sales</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="barcode"/>
+                    <field name="product_type"/>
+                    <field name="product_cat_id"/>
+                    <field name="sale_price"/>
+                    <field name="product_stock"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_product_sales" model="ir.ui.view">
+            <field name="name">form.product.sales</field>
+            <field name="model">product.ept.sales</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <header>
+                            <button name="update_stock_wizard" string="Update Stock" type="object"/>
+                            <button name="%(Sales.action_update_stock)d" string="Update Stock Action" type="action"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sku"/>
+                                <field name="barcode"/>
+                                <field name="product_cat_id" domain="[('parent_id','!=',False)]"/>
+                                <field name="product_type"/>
+                                <field name="cost_price"/>
+                                <field name="sale_price"/>
+                            </group>
+                            <group>
+                                <field name="volume"/>
+                                <field name="length"/>
+                                <field name="weight"/>
+                                <field name="width"/>
+                                <field name="product_uom_id"/>
+                                <field name="salable"/>
+                                <field name="product_stock"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_product_search" model="ir.ui.view">
+            <field name="name">product.sales.ept.search</field>
+            <field name="model">product.ept.sales</field>
+            <field name="arch" type="xml">
+                <search string="search">
+                    <field name="name"/>
+                    <field name="sku"/>
+                    <field name="barcode"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_product_sales_ept" model="ir.actions.act_window">
+            <field name="name">Product</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="res_model">product.ept.sales</field>
+            <field name="type">ir.actions.act_window</field>
+        </record>
+    </data>
+</odoo>

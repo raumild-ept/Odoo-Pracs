@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_tree_inventory_line" model="ir.ui.view">
+            <field name="name">inventory.line.tree</field>
+            <field name="model">stock.inventory.line.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Tree" editable = "top">
+                    <field name="product_id"/>
+                    <field name="available_qty"/>
+                    <field name="counted_product_qty"/>
+                    <field name="difference"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <record model="ir.ui.view" id="view_form_inventory_line">-->
+<!--            <field name="name">inventory.line.tree</field>-->
+<!--            <field name="model">stock.inventory.line.ept</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="form">-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <field name="product_id"/>-->
+<!--                            <field name="available_qty"/>-->
+<!--                            <field name="counted_product_qty"/>-->
+<!--                            <field name="difference"/>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="action_inventory_line" model="ir.actions.act_window">
+            <field name="name">Inventory Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.inventory.line.ept</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create New.
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

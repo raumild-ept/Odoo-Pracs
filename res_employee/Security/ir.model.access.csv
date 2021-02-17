@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+employee_ept_user,employee.ept,model_employee_ept,custom_user,1,1,1,0
+employee_ept_manager,employee.ept,model_employee_ept,custom_manager,0,0,0,1
+
+

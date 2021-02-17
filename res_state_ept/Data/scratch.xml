@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id = "res_state_ept_1" model = "res.state.ept">
+            <field name = "state_name">Gujarat</field>
+            <field name = "state_code">GJ</field>
+            <field name = "country">India</field>
+            <field name = "active">True</field>
+        </record>
+        <record id = "res_state_ept_2" model = "res.state.ept">
+            <field name = "state_name">Rajasthan</field>
+            <field name = "state_code">RJ</field>
+            <field name = "country">India</field>
+            <field name = "active">True</field>
+        </record>
+        <record id = "res_state_ept_3" model = "res.state.ept">
+            <field name = "state_name">New York</field>
+            <field name = "state_code">NY</field>
+            <field name = "country">United States</field>
+            <field name = "active">False</field>
+        </record>
+    </data>
+</odoo>
