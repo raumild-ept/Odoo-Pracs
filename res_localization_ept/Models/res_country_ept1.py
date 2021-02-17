@@ -30,4 +30,3 @@ class ResCountryEpt(models.Model):
                 args = dom
         return super(ResCountryEpt, self)._search(args, offset, limit, order, count=count,
                                                   access_rights_uid=access_rights_uid)
-
