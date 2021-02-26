@@ -59,6 +59,8 @@
                                 <field name="total_weight"/>
                                 <field name="total_volume"/>
                                 <field name="warehouse_id"/>
+                                <field name="total_tax"/>
+                                <field name="total_amount"/>
                             </group>
                         </group>
                         <notebook>
@@ -73,14 +75,27 @@
                                                 <field name="state"/>
                                                 <field name="quantity"/>
                                                 <field name="unit_price"/>
-                                                <field name="subtotal_nodb"/>
-                                                <field name="subtotal_onchange"/>
-                                                <field name="subtotal_ondepends"/>
+<!--                                                <field name="subtotal_nodb"/>-->
+                                                <field name="subtotal_without_tax"/>
+<!--                                                <field name="subtotal_ondepends"/>-->
+                                                <field name="subtotal_tax"/>
+                                                <field name="tax_ids" widget="many2many_tags"/>
                                             </group>
                                             <notebook>
                                                 <page string="Stock moves">
                                                     <field name="stock_move_ids"/>
                                                 </page>
+<!--                                                <page string="Tax" >-->
+<!--                                                    <field name="tax_ids">-->
+<!--&lt;!&ndash;                                                        <tree editable = "top">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            <sheet>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                    <field name="name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                </group>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            </sheet>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        </tree>&ndash;&gt;-->
+<!--                                                    </field>-->
+<!--                                                </page>-->
                                             </notebook>
                                         </sheet>
                                     </form>

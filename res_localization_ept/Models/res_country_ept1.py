@@ -9,6 +9,7 @@ class ResCountryEpt(models.Model):
     c_code = fields.Char(string="Country Code", required=True, help="Please enter country code")
     state_ids = fields.One2many(comodel_name ="res.state1.ept",inverse_name="country_id", string="State Names")
 
+
     @api.model
     def _search(self, args, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
         if args:
@@ -20,13 +21,8 @@ class ResCountryEpt(models.Model):
         return super(ResCountryEpt, self)._search(args, offset, limit, order, count=count,
                                                   access_rights_uid=access_rights_uid)
 
-
-    def search2(self, args, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
-        if args:
-            if args[0][0] == 'country':
-                dom = ['|']
-                dom.append(args[0])
-                dom.append(['c_code', 'ilike', args[0][2]])
-                args = dom
-        return super(ResCountryEpt, self)._search(args, offset, limit, order, count=count,
-                                                  access_rights_uid=access_rights_uid)
+    @api.constrains('c_code')
+    def constraint_unique_c_code(self):
+            for record in self.search([]):
+                if record.c_code == self.c_code and record.id != self.id:
+                    raise Warning(_('iS NOT UNIQUE'))

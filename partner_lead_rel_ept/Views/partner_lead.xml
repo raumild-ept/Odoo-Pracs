@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_lead__rel_form" model="ir.ui.view">
+            <field name="name">partner.lead.rel.form</field>
+            <field name="model">partner.lead.rel</field>
+            <field name="arch" type="xml">
+                <form string="partner lead form">
+                    <header>
+                        <button string="Get Pipeline Details" name="get_pipeline_details" type="object"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="get_leads" type="object" class="oe_stat_button"
+                                    icon="fa-users">
+                                <field name="leads_count" widget="statinfo" string="View Leads"/>
+                            </button>
+                            <button name="get_paid_orders" type="object" class="oe_stat_button"
+                                    icon="fa-list">
+                                <field name="paid_orders_count" widget="statinfo" string="View Paid Orders"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="partner_contacts_ids" widget="many2many_tags"/>
+                                <field name="lead_ids" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                                <field name="total_revenue"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Sales Count">
+                                <field name="salesperson_lead_count_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="total_revenue"/>
+                                        <field name="total_pipelines"/>
+                                        <field name="total_quotations"/>
+                                        <field name="total_saleorders"/>
+                                        <field name="total_order_amount"/>
+                                        <field name="success_percentage"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="total_revenue"/>
+                                                <field name="total_pipelines"/>
+                                                <field name="total_quotations"/>
+                                                <field name="total_saleorders"/>
+                                                <field name="total_order_amount"/>
+                                                <field name="success_percentage"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids"/>
+                            <field name="activity_ids"/>
+                            <field name="message_ids"/>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_partner_lead__rel_tree" model="ir.ui.view">
+            <field name="name">partner.lead.rel.tree</field>
+            <field name="model">partner.lead.rel</field>
+            <field name="arch" type="xml">
+                <tree string="partner lead rel tree" decoration-success="total_revenue > 10000">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="total_revenue"/>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        <record id="view_partner_lead__rel_search" model="ir.ui.view">-->
+        <!--            <field name="name">partner.lead.rel.search</field>-->
+        <!--            <field name="model">partner.lead.rel</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search string="search">-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                    </group>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <record id="action_partner_lead_rel" model="ir.actions.act_window">
+            <field name="name">Partners</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">partner.lead.rel</field>
+            <field name="view_mode">tree,form,search,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Add something!!!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.sequence" id="sequence_partner_lead_rel">
+            <field name="name">partner.lead.rel.sequence.generator</field>
+            <field name="code">partner.lead.rel</field>
+            <field name="prefix">Seq_</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <menuitem name="Partners - Leads" id="root_partner_lead_rel"
+                  web_icon="partner_lead_rel_ept,static/lead.png"/>
+        <menuitem name="Customer Details" id="menu_partner_lead_rel" parent="root_partner_lead_rel"/>
+        <menuitem name="My Customer Details" id="menu_my_customer_details" parent="menu_partner_lead_rel"
+                  action="action_partner_lead_rel"/>
+
+    </data>
+</odoo>

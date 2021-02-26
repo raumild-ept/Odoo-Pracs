@@ -13,4 +13,5 @@ from . import \
     picking,\
     move,\
     inventory,\
-    inventory_line
+    inventory_line,\
+    account_tax_ept

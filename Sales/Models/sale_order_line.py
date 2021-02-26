@@ -24,6 +24,38 @@ class SaleOrderLine(models.Model):
     stock_move_ids = fields.One2many(comodel_name='stock.move.ept', inverse_name='sale_line_id', string="Stock Moves")
     delivered_qty = fields.Float(string="Delivered QTY", digits=(6, 2), compute='_deliver_compute')
     warehouse_id = fields.Many2one(comodel_name='stock.warehouse.ept',string="Warehouse")
+    tax_ids = fields.Many2many(comodel_name = "account.tax.ept", string="Taxes", help="Taxes")
+    tax_total = fields.Float(compute="_compute_tax",string="Subtotal of  Tax",store=True)
+    subtotal_without_tax = fields.Float(compute='_compute_subtotal_without_tax',string="Subtotal Without Tax",store = True)
+    subtotal_tax = fields.Float(compute="_compute_subtotal_with_tax",string='Subtotal With Tax',store=True)
+
+    @api.onchange('product_name_id')
+    def on_product_select(self):
+        if self.product_name_id:
+            self.unit_price = self.product_name_id.sale_price
+            self.quantity = 1
+            self.uom_id = self.product_name_id.product_uom_id
+
+    @api.depends('tax_total','subtotal_without_tax')
+    def _compute_subtotal_with_tax(self):
+        for record in self:
+            record.subtotal_tax = record.tax_total + record.subtotal_without_tax
+
+    @api.depends('quantity')
+    def _compute_tax(self):
+        for record in self:
+            temp_tax = 0
+            for tax in record.tax_ids:
+                if tax.tax_amount_type == "Percentage":
+                    temp_tax +=(record.quantity*record.unit_price)*tax.tax_value/100
+                else:
+                    temp_tax += tax.tax_value
+            record.tax_total=temp_tax
+
+    @api.depends('quantity','unit_price')
+    def _compute_subtotal_without_tax(self):
+        for record in self:
+            record.subtotal_without_tax=record.quantity*record.unit_price
 
     def _compute_subtotal(self):
         print(self)

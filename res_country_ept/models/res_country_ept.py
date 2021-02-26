@@ -9,3 +9,4 @@ class ResCountryEpt(models.Model):
     c_code = fields.Char(string="Country Code", required=True, help="Please enter country code")
     active_is = fields.Selection([('Active', 'Active'), ('Inactive', 'Inactive')], string="Active/Inactive",
                               required=True, default="Active")
+

@@ -9,10 +9,11 @@
                     <field name="order_no_id"/>
                     <field name="product_name_id"/>
                     <field name="uom_id"/>
-                    <field name="state"/>
+                    <field name="subtotal_tax"/>
                     <field name="quantity"/>
                     <field name="unit_price"/>
                     <field name="delivered_qty"/>
+                    <field name="tax_ids" widget = "many2many_tags"/>
                 </tree>
             </field>
         </record>
@@ -33,11 +34,17 @@
                             <field name="unit_price"/>
 <!--                            <field name="subtotal_nodb"/>-->
 <!--                            <field name="subtotal_onchange"/>-->
-                            <field name="subtotal_ondepends"/>
+                            <field name="subtotal_without_tax"/>
+                            <field name="subtotal_tax"/>
+
+
                         </group>
                         <notebook>
                             <page string="Stock Moves">
                                 <field name="stock_move_ids"/>
+                            </page>
+                            <page string = "Tax">
+                                <field name="tax_ids"/>
                             </page>
                         </notebook>
                     </sheet>

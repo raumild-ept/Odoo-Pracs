@@ -22,6 +22,7 @@ class ProductEpt(models.Model):
     product_uom_id = fields.Many2one(comodel_name='product.uom.ept', string="UOM", help="Product UoM")
     product_stock = fields.Float(digits=(6, 2), strong='Product Stock', readonly=True, store=False,
                                  compute='_compute_stock')
+    tax_ids = fields.Many2many(comodel_name="account.tax.ept",string = "Taxes",help="Taxes")
 
     def _compute_stock(self):
         warehouses = self.env['stock.warehouse.ept'].search([])
@@ -52,7 +53,8 @@ class ProductEpt(models.Model):
 
     def update_stock_wizard(self):
         view_id = self.env.ref('Sales.view_form_stock_update').id
-        return {'type': 'ir.actions.act_window',
+        return {
+                'type': 'ir.actions.act_window',
                 'name': _('Update Stock'),
                 'res_model': 'stock.product.update.ept',
                 'target': 'new',

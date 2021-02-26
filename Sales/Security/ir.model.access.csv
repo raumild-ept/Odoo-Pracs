@@ -33,3 +33,5 @@ stock_inventory_line_user,stock_inventory_line_ept,model_stock_inventory_line_ep
 stock_inventory_line_manager,stock_inventory_line_ept,model_stock_inventory_line_ept,custom_manager,1,1,1,1
 stock_stock_update_user,stock_product_update_ept,model_stock_product_update_ept,custom_user,1,1,1,1
 stock_stock_update_manager,stock_product_update_ept,model_stock_product_update_ept,custom_manager,1,1,1,1
+account_tax_ept_user,account_tax_ept,model_account_tax_ept,custom_user,1,1,1,1
+account_tax_ept_manager,account_tax_ept,model_account_tax_ept,custom_manager,1,1,1,1

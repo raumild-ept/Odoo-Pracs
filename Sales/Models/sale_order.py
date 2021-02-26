@@ -22,11 +22,25 @@ class SaleOrder(models.Model):
     total_weight = fields.Float(compute='_compute_total_weight_and_volume', string="Weight")
     total_volume = fields.Float(string="Volume")
     lead_id = fields.Many2one(comodel_name='crm.lead.ept2', string='Lead ID', help='Enter Lead ID')
-    warehouse_id = fields.Many2one(comodel_name='stock.warehouse.ept', string="Warehouse", help='Select Warehouse')
-    picking_ids = fields.One2many(comodel_name='stock.picking.ept', inverse_name='sale_order_id', string="Picking IDs",
+    warehouse_id = fields.Many2one(comodel_name='stock.warehouse.ept', string="Warehouse",
+                                   help='Select Warehouse')
+    picking_ids = fields.One2many(comodel_name='stock.picking.ept',
+                                  inverse_name='sale_order_id',
+                                  string="Picking IDs",
                                   readonly=True)
     moves_count = fields.Integer(compute="_compute_count")
     picks_count = fields.Integer(compute="_compute_count")
+    total_tax = fields.Float(compute="_compute_total_tax",string = "Total Tax",store=True)
+    total_amount = fields.Float(compute="_compute_total_amount",string = "Total Amount",store=True)
+    subtotal_without_tax = fields.Float(compute="_compute_sub",store = True)
+
+    @api.depends('order_line_ids')
+    def _compute_sub(self):
+        for record in self:
+            line_total = 0
+            for line in record.order_line_ids:
+                line_total += line.subtotal_without_tax
+            record.subtotal_without_tax = line_total
 
     def _compute_total_weight_and_volume(self):
         temp_weight = 0
@@ -39,17 +53,28 @@ class SaleOrder(models.Model):
 
     @api.onchange('customer_id')
     def _default_address(self):
-        i = 0
-        j = 0
-        for child_id in self.customer_id.child_ids:
-            if child_id.address_type == 'Invoice' and i == 0:
-                self.invoice_customer_id = child_id
-                i += 1
-            elif child_id.address_type == 'Shipping' and j == 0:
-                self.shipping_customer_id = child_id
-                j += 1
-            elif i == 1 and j == 1:
-                break
+        if self.customer_id:
+            # i = 0
+            # j = 0
+            # for child_id in self.customer_id.child_ids:
+            #     if child_id.address_type == 'Invoice' and i == 0:
+            #         self.invoice_customer_id = child_id
+            #         i += 1
+            #     elif child_id.address_type == 'Shipping' and j == 0:
+            #         self.shipping_customer_id = child_id
+            #         j += 1
+            #     elif i == 1 and j == 1:
+            #         break
+            invoice = list(filter(lambda child:child if child.address_type == 'Invoice' else False,
+                                  list(self.customer_id.child_ids)))
+            shipping = list(filter(lambda child: child if child.address_type == 'Shipping' else False,
+                             list(self.customer_id.child_ids)))
+            if invoice:
+                self.invoice_customer_id = invoice[0]
+            if shipping:
+                self.shipping_customer_id = shipping[0]
+
+
 
     @api.model
     def create(self, vals):
@@ -160,3 +185,18 @@ class SaleOrder(models.Model):
                                                    'state': 'Draft',
                                                    'sale_line_id': line.id,
                                                    'picking_id': order.id})
+
+    @api.depends('order_line_ids')
+    def _compute_total_tax(self):
+        for record in self:
+            tax = 0
+            for line in record.order_line_ids:
+                tax+=line.tax_total
+            record.total_tax = tax
+
+    @api.depends('order_line_ids')
+    def _compute_total_amount(self):
+        for record in self:
+            record.total_amount = record.subtotal_without_tax + record.total_tax
+
+

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sales_Extended_user2,sales_extended,model_sale_order,Sales.custom_user,1,1,1,1
+sales_Extended_user3,sales_extended,model_sale_order,Sales.custom_manager,1,1,1,1
+sales_Extended_user4,sales_extended,model_crm_lead,Sales.custom_user,1,1,1,1
+sales_Extended_user5,sales_extended,model_crm_lead,Sales.custom_manager,1,1,1,1
+sales_Extended_user6,sales_extended,model_product_template,Sales.custom_user,1,1,1,1
+sales_Extended_user7,sales_extended,model_product_template,Sales.custom_manager,1,1,1,1

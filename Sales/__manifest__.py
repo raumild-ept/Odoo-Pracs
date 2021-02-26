@@ -1,7 +1,7 @@
 {
  'name' : 'Sales_ept',
  'version' : '1.0',
- 'depends' : ['res_localization_ept'],
+ 'depends' : ['sale_crm'],
  'author' : 'Raumil D',
  'description' : 'This is product_category_ept',
  'data' : ['Security/security.xml','Security/ir.model.access.csv',
@@ -23,6 +23,7 @@
            'Views/picking_sequence.xml',
            'Views/inventory_line.xml',
            'Wizard/wizard.xml',
+           'Views/tax.xml',
            'Views/menu.xml'],
  'demo' : [],
  'installable' : True

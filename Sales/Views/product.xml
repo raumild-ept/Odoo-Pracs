@@ -46,6 +46,11 @@
                                 <field name="product_stock"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string = "Tax">
+                                <field name="tax_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
