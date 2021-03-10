@@ -25,12 +25,20 @@
         <field name="arch" type="xml">
             <form string="Create Contact.">
                 <sheet>
+                    <div>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" widget="field_partner_autocomplete"/>
+                        </h1>
+                    </div>
 
                     <group>
                         <group>
-                            <field name="name"/>
                             <field name="street1"/>
                             <field name="street2"/>
+                            <field name="bdate"/>
+                            <field name="age_calculate"/>
+                            <field name="age_calculate_readonly" attrs="{'readonly': [(1, '=', 1)]}"/>
                             <field name="city"/>
                             <field name="state1"/>
                             <field name="country1"/>

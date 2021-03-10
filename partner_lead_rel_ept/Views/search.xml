@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_lead_Search" model="ir.ui.view">
+            <field name="name">partner.lead.search</field>
+            <field name="model">partner.lead.rel</field>
+            <field name="arch" type="xml">
+                <search string="search">
+                    <group expand="1" string="Group By">
+                        <filter string="Partner" name="group_by_partner_id" domain="[]"
+                                context="{'group_by':'partner_id'}"/>
+                    </group>
+                    <field name="partner_id" filter_domain="['|', ('partner_id','ilike',self), ('name','ilike',self)]" string="Search Partner"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

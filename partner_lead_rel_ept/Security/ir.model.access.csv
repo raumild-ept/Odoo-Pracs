@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-partner_lead_rel_user,partner.lead.rel,model_partner_lead_rel,sales_team.group_sale_salesman,1,1,1,1
-salesperson_lead_count_user,salesperson.lead.count,model_salesperson_lead_count,sales_team.group_sale_salesman,1,1,1,1
+partner_lead_rel_user,partner.lead.rel,model_partner_lead_rel,partner_lead_group_salesperson,1,1,1,1
+salesperson_lead_count_user,salesperson.lead.count,model_salesperson_lead_count,partner_lead_group_salesperson,1,1,1,1
+partner_lead_rel_manager,partner.lead.rel,model_partner_lead_rel,partner_lead_group_manager,1,1,1,1
+salesperson_lead_count_manager,salesperson.lead.count,model_salesperson_lead_count,partner_lead_group_manager,1,1,1,1

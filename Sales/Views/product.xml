@@ -16,6 +16,52 @@
             </field>
         </record>
 
+        <record id="view_tree_product_by_context" model="ir.ui.view">
+            <field name="name">tree.product.sales2</field>
+            <field name="model">product.ept.sales</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="product_type"/>
+                    <field name="product_cat_id"/>
+                    <field name="sale_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_product_by_context" model="ir.ui.view">
+            <field name="name">form.product.sales.context</field>
+            <field name="model">product.ept.sales</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sku"/>
+                                <field name="barcode"/>
+                                <field name="product_cat_id" domain="[('parent_id','!=',False)]"/>
+                                <field name="product_type"/>
+                                <field name="cost_price"/>
+                                <field name="sale_price"/>
+                            </group>
+                            <group>
+                                <field name="product_uom_id"/>
+                                <field name="salable"/>
+                                <field name="product_stock"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tax">
+                                <field name="tax_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
         <record id="view_form_product_sales" model="ir.ui.view">
             <field name="name">form.product.sales</field>
             <field name="model">product.ept.sales</field>
@@ -47,7 +93,7 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string = "Tax">
+                            <page string="Tax">
                                 <field name="tax_ids"/>
                             </page>
                         </notebook>

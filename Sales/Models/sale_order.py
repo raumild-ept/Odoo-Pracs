@@ -1,4 +1,6 @@
 from odoo import fields, models, api, SUPERUSER_ID, _
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 
 class SaleOrder(models.Model):
@@ -32,7 +34,18 @@ class SaleOrder(models.Model):
     picks_count = fields.Integer(compute="_compute_count")
     total_tax = fields.Float(compute="_compute_total_tax",string = "Total Tax",store=True)
     total_amount = fields.Float(compute="_compute_total_amount",string = "Total Amount",store=True)
-    subtotal_without_tax = fields.Float(compute="_compute_sub",store = True)
+    subtotal_without_tax = fields.Float(compute="_compute_sub",store = False)
+
+
+    def list_age_equal(self):
+        action = self.env['ir.actions.act_window']._for_xml_id('Sales.action_res_partners_sales_ept')
+        to_show = self.env['res.partner.sales.ept'].search([('age_calculate','=',20)
+                                                            ])
+
+        action['domain'] = [('id','in',to_show.ids)]
+        action['views'] = [(self.env.ref('Sales.view_res_partner_sales_tree').id,'tree'),
+                           (self.env.ref('Sales.view_res_partner_sales_form').id,'form')]
+        return action
 
     @api.depends('order_line_ids')
     def _compute_sub(self):

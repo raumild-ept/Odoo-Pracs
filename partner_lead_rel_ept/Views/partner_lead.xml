@@ -13,28 +13,36 @@
                         <div class="oe_button_box" name="button_box">
                             <button name="get_leads" type="object" class="oe_stat_button"
                                     icon="fa-users">
-                                <field name="leads_count" widget="statinfo" string="View Leads"/>
+                                <field name="leads_count" widget="statinfo" string="Leads"/>
                             </button>
                             <button name="get_paid_orders" type="object" class="oe_stat_button"
                                     icon="fa-list">
-                                <field name="paid_orders_count" widget="statinfo" string="View Paid Orders"/>
+                                <field name="paid_orders_count" widget="statinfo" string="Paid Orders"/>
                             </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
                         </div>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="name2"/>
                                 <field name="partner_id"/>
-                                <field name="partner_contacts_ids" widget="many2many_tags"/>
-                                <field name="lead_ids" widget="many2many_tags"/>
+                                <field name="partner_contacts_ids" widget="many2many_tags_avatar"/>
+                                <field name="total_revenue"/>
+                                <field name="sample_field" attrs="{'invisible':[(1,'=',1)]}"/>
                             </group>
                             <group>
                                 <field name="from_date"/>
                                 <field name="to_date"/>
-                                <field name="total_revenue"/>
                             </group>
                         </group>
                         <notebook>
-                            <page string="Sales Count">
+                            <page string="Opportunities">
+                                <field name="lead_ids"/>
+                            </page>
+                            <page string="Salespersons">
                                 <field name="salesperson_lead_count_ids">
                                     <tree>
                                         <field name="name"/>
@@ -87,22 +95,12 @@
             </field>
         </record>
 
-        <!--        <record id="view_partner_lead__rel_search" model="ir.ui.view">-->
-        <!--            <field name="name">partner.lead.rel.search</field>-->
-        <!--            <field name="model">partner.lead.rel</field>-->
-        <!--            <field name="arch" type="xml">-->
-        <!--                <search string="search">-->
-        <!--                    <group expand="1" string="Group By">-->
-        <!--                    </group>-->
-        <!--                </search>-->
-        <!--            </field>-->
-        <!--        </record>-->
-
         <record id="action_partner_lead_rel" model="ir.actions.act_window">
             <field name="name">Partners</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">partner.lead.rel</field>
             <field name="view_mode">tree,form,search,kanban</field>
+            <field name="context">{'search_default_group_by_partner_id': 1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Add something!!!
@@ -116,10 +114,9 @@
             <field name="prefix">Seq_</field>
             <field name="padding">5</field>
             <field name="number_increment">1</field>
-            <field name="number_next">1</field>
         </record>
 
-        <menuitem name="Partners - Leads" id="root_partner_lead_rel"
+        <menuitem name="Customer Details" id="root_partner_lead_rel"
                   web_icon="partner_lead_rel_ept,static/lead.png"/>
         <menuitem name="Customer Details" id="menu_partner_lead_rel" parent="root_partner_lead_rel"/>
         <menuitem name="My Customer Details" id="menu_my_customer_details" parent="menu_partner_lead_rel"

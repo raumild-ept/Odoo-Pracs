@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="admin_mark_terminator" model="ir.cron">
+           <field name="name">my cron</field>
+           <field name="active" eval="True"/>
+           <field name="user_id" ref="base.user_root"/>
+           <field name="interval_number">20</field>
+           <field name="interval_type">minutes</field>
+           <field name="cron_name">terminated</field>
+           <field name="numbercall">-1</field>
+           <field name="doall">1</field>
+           <field name="state">code</field>
+           <field name="model_id" ref="model_sale_order"/>
+           <field name="code">model._cron_job_new()</field>
+       </record>
+    </data>
+</odoo>

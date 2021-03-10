@@ -53,6 +53,18 @@
         <!--            </field>-->
         <!--        </record>-->
 
+        <record id="view_sale_order_filter_extended" model="ir.ui.view">
+            <field name="name">search.sale.order.extended</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <filter string="Is Picking Done" name="_is_picking_done"
+                                domain="[('is_all_picking_completed','=',True)]"/>
+                </xpath>
+            </field>
+
+        </record>
         <record id="tad_id_data_to_sale_order" model="crm.tag">
             <field name="name">From Lead</field>
             <field name="color">2</field>

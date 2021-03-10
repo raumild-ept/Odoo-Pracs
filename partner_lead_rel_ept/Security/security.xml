@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="partner_lead_category">
+            <field name="name">Customer Details</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="partner_lead_group_salesperson" model="res.groups">
+            <field name="name">Sales Person</field>
+            <field name="category_id" ref="partner_lead_category"/>
+        </record>
+
+        <record id="partner_lead_group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="partner_lead_category"/>
+            <field name="implied_ids" eval="[(4, ref('partner_lead_group_salesperson'))]"/>
+        </record>
+
+        <record id="record_rule_salesperson" model="ir.rule">
+            <field name="name">Rule for Salespersons</field>
+            <field name="active">True</field>
+            <field name="model_id" ref="model_salesperson_lead_count"/>
+            <field name="groups" eval="[4,ref('partner_lead_group_salesperson')]"/>
+            <field name="domain_force">[('name','=',user.id)]</field>
+            <field name="perm_read" eval = "1"/>
+            <field name="perm_write" eval = "1"/>
+            <field name="perm_create" eval = "1"/>
+            <field name="perm_unlink" eval = "1"/>
+
+        </record>
+
+        <record id="record_rule_manager" model="ir.rule">
+            <field name="name">Rule for Manager</field>
+            <field name="active">True</field>
+            <field name="model_id" ref="model_salesperson_lead_count"/>
+            <field name="groups" eval="[4,ref('partner_lead_group_manager')]"/>
+        </record>
+
+    </data>
+</odoo>

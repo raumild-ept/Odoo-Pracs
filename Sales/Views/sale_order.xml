@@ -10,7 +10,7 @@
                     <field name="customer_id" domain="[('parent_id','=',False)]"/>
                     <field name="invoice_customer_id"/>
                     <field name="shipping_customer_id"/>
-                    <field name="state"/>
+                    <field name="state" widget="badge" decoration-success="state == 'Draft'"/>
                     <field name="salesperson_id"/>
                     <field name="sale_order_date"/>
                     <field name="total_weight"/>
@@ -27,7 +27,7 @@
                     <header>
                         <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
                         <button name="confirm_sale_order" string="Confirm Sale Order" type="object"/>
-
+                        <button name="list_age_equal" string="Age 20" type="object"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -47,7 +47,6 @@
                                 <field name="customer_id" domain="[('parent_id','=',False)]"/>
                                 <field name="invoice_customer_id"
                                        domain="[('parent_id','=',customer_id),('address_type','=','Invoice')]"
-
                                 />
                                 <field name="shipping_customer_id"
                                        domain="[('parent_id','=',customer_id),('address_type','=','Shipping')]"
@@ -65,40 +64,29 @@
                         </group>
                         <notebook>
                             <page string="Order Lines">
-                                <field name="order_line_ids">
-                                    <form>
-                                        <sheet>
-                                            <group>
-                                                <field name="product_name_id"/>
-                                                <field name="warehouse_id"/>
-                                                <field name="uom_id"/>
-                                                <field name="state"/>
-                                                <field name="quantity"/>
-                                                <field name="unit_price"/>
-<!--                                                <field name="subtotal_nodb"/>-->
-                                                <field name="subtotal_without_tax"/>
-<!--                                                <field name="subtotal_ondepends"/>-->
-                                                <field name="subtotal_tax"/>
-                                                <field name="tax_ids" widget="many2many_tags"/>
-                                            </group>
-                                            <notebook>
-                                                <page string="Stock moves">
-                                                    <field name="stock_move_ids"/>
-                                                </page>
-<!--                                                <page string="Tax" >-->
-<!--                                                    <field name="tax_ids">-->
-<!--&lt;!&ndash;                                                        <tree editable = "top">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                            <sheet>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                <group>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                    <field name="name"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                </group>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                            </sheet>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </tree>&ndash;&gt;-->
-<!--                                                    </field>-->
+                                <field name="order_line_ids" context="{'form_view_ref':'Sales.view_order_line_form_by_context'}">
+<!--                                    <form>-->
+<!--                                        <sheet>-->
+<!--                                            <group>-->
+<!--                                                <field name="product_name_id"/>-->
+<!--                                                <field name="warehouse_id"/>-->
+<!--                                                <field name="uom_id"/>-->
+<!--                                                <field name="state"/>-->
+<!--                                                <field name="quantity"/>-->
+<!--                                                <field name="unit_price"/>-->
+<!--&lt;!&ndash;                                                <field name="subtotal_nodb"/>&ndash;&gt;-->
+<!--                                                <field name="subtotal_without_tax"/>-->
+<!--&lt;!&ndash;                                                <field name="subtotal_ondepends"/>&ndash;&gt;-->
+<!--                                                <field name="subtotal_tax"/>-->
+<!--                                                <field name="tax_ids" widget="many2many_tags"/>-->
+<!--                                            </group>-->
+<!--                                            <notebook>-->
+<!--                                                <page string="Stock moves">-->
+<!--                                                    <field name="stock_move_ids" context="{'tree_view_ref':'Sales.view_tree_stock_move_ept'}"/>-->
 <!--                                                </page>-->
-                                            </notebook>
-                                        </sheet>
-                                    </form>
+<!--                                            </notebook>-->
+<!--                                        </sheet>-->
+<!--                                    </form>-->
                                 </field>
                             </page>
                             <page string="Picks">
@@ -132,7 +120,6 @@
             <field name="prefix">A</field>
             <field name="suffix"/>
             <field name="number_increment">1</field>
-
         </record>
 
         <record id="action_sale_order_ept" model="ir.actions.act_window">

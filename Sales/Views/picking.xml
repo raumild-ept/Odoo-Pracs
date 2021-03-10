@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Form">
                     <header>
-                        <button name="validate_delivery_order" string = "Validate" type="object"/>
+                        <button name="validate_delivery_order" string="Validate" type="object"/>
                     </header>
                     <sheet>
                         <group>
@@ -72,6 +72,18 @@
             </field>
         </record>
 
+        <record id="view_tree_stock_move_ept" model="ir.ui.view">
+            <field name="name">stock.move.tree</field>
+            <field name="model">stock.move.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Tree">
+                    <field name="name"/>
+                    <field name="source_location_id"/>
+                    <field name="destination_location_id"/>
+                    <field name="qty_to_deliver"/>
+                </tree>
+            </field>
+        </record>
 
     </data>
 </odoo>
