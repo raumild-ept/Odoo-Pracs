@@ -24,34 +24,12 @@
                 <field name="lead_id" position="after">
                     <field name="tag_ids" widget="many2many_tags"/>
                 </field>
-<!--                <xpath expr="//page[@name='order_lines']" position="inside">-->
-<!--                    <field name="order_line">-->
-<!--                        <tree>-->
-<!--                            <field name="product_id"/>-->
-<!--                            <field name="name"/>-->
-<!--                            <field name="parent_line_id"/>-->
-<!--                            <field name="product_uom_qty"/>-->
-<!--                            <field name="price_unit"/>-->
-<!--                            <field name="tax_id"/>-->
-<!--                            <field name="price_subtotal"/>-->
-<!--                        </tree>-->
-<!--                    </field>-->
-<!--                </xpath>-->
+                <xpath expr="//page[@name='order_lines']//tree" position="inside">
+                        <field name = "warehouse_manual_id"/>
+                </xpath>
             </field>
         </record>
 
-
-        <!--        <record id="sales_extended_act_window2" model="ir.actions.act_window">-->
-        <!--            <field name="name">Add</field>-->
-        <!--            <field name="type">ir.actions.act_window</field>-->
-        <!--            <field name="res_model">sale.order</field>-->
-        <!--            <field name="view_mode">tree,form</field>-->
-        <!--            <field name="help" type="html">-->
-        <!--                <p class="oe_view_nocontent_create">-->
-        <!--                    There is no examples click here to add new ModelTitle.-->
-        <!--                </p>-->
-        <!--            </field>-->
-        <!--        </record>-->
 
         <record id="view_sale_order_filter_extended" model="ir.ui.view">
             <field name="name">search.sale.order.extended</field>
@@ -87,11 +65,5 @@
             <field name="amount">34.99</field>
         </record>
 
-        <!--        <menuitem name="Sales Extended" id="sales_extended_menu_root"-->
-        <!--                  />-->
-        <!--        <menuitem name="Sales" parent="sales_extended_menu_root"-->
-        <!--                  id = "sales_menu1_extended_ept"-->
-        <!--                  action = "sales_extended_act_window2"-->
-        <!--                  />-->
     </data>
 </odoo>

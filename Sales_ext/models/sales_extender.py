@@ -38,7 +38,11 @@ class Extender(models.Model):
         # carrier = self.env.ref('Sales_ext.custom_shipping_by_default')
         # # set_delivery_line() args:-> carrier (Shipping method browse object), any price.
         # self.set_delivery_line(carrier, 35.99)
-        super(Extender,self).action_confirm()
+            super(Extender,self).action_confirm()
+
+
+
+
 
     # Method to create deposit line.
     def create_deposit_line(self, line):

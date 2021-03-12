@@ -1,5 +1,6 @@
 from odoo import fields, models
 
+
 class EmployeeMgmt(models.Model):
     _name="res.employee.mgmt.ept"
     _description="Employee Management"

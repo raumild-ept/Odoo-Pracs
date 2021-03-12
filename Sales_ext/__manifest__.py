@@ -10,7 +10,8 @@
              'views/report_template.xml',
              'views/extended.xml',
              'views/product.xml',
-             'views/sale_line.xml'],
+             'views/sale_line.xml',
+             'views/sale_order_line.xml'],
     'installable': True,
     'auto_install': False
 }
