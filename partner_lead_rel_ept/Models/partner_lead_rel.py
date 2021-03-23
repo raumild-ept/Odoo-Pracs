@@ -6,8 +6,8 @@ class PartnerLeadRel(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Partner Lead Relationship.'
 
-    name = fields.Char(string='Name', readonly=True, default='Seq_#####')
-    name2=fields.Char(string='Name',default = 'seq')
+    name = fields.Char(string='Name', readonly=True, default='SEQ_#####')
+    name2=fields.Char(string='Name',default = 'SEQ_#####')
     from_date = fields.Date(string='From Date',help="Enter start date.")
     to_date = fields.Date(string='To Date',help="Enter end date.")
     partner_id = fields.Many2one(comodel_name='res.partner', string='Partner', domain="[('is_company','=',True)]",help='Enter Partner.')

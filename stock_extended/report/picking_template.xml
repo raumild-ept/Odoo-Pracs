@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_picking_template_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div t-foreach="products" t-as="p">
+                    <t t-set="total" t-value="0"/>
+                    <br/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <table>
+                            <tr>
+                                <th>
+                                    <strong t-field="p.name"></strong>
+                                </th>
+                                <th>
+                                    <strong>Quantity</strong>
+                                </th>
+                            </tr>
+                            <t t-foreach="docs" t-as="doc">
+                                <tr>
+                                    <t t-if="p.id in doc.move_ids_without_package.mapped('product_id').ids">
+                                        <td>
+                                            <strong t-field="doc.name"/>
+                                        </td>
+                                        <t t-foreach="doc.move_line_ids_without_package" t-as="move">
+                                            <td>
+                                                <div>
+                                                    <p t-if="move.product_id.id == p.id">
+                                                        <strong t-field="move.product_uom_qty"
+                                                                style="margin-left:400px"/>
+                                                        <t t-set="total" t-value="total+move.product_uom_qty"/>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </t>
+                                    </t>
+                                </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                                <td name="td_amount_total_label">
+                                    <strong>Total</strong>
+                                </td>
+                                <td name="td_amount_total" class="text-right">
+                                    <span t-esc="total"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

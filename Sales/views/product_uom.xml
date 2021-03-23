@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+        <record id="view_tree_product_uom_ept" model="ir.ui.view">
+            <field name="name">tree.product.uom.ept</field>
+            <field name="model">product.uom.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="uom_category_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_product_uom_ept" model="ir.ui.view">
+            <field name="name">form.product.uom.ept</field>
+            <field name="model">product.uom.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="uom_category_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_product_uom_search" model="ir.ui.view">
+            <field name="name">product.uom.ept.search</field>
+            <field name="model">product.uom.ept</field>
+            <field name="arch" type="xml">
+                <search string="search">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_product_uom" model="ir.actions.act_window">
+            <field name="name">Product UoM</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="res_model">product.uom.ept</field>
+            <field name="type">ir.actions.act_window</field>
+        </record>
+
+</odoo>

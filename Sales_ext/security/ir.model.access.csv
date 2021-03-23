@@ -5,3 +5,4 @@ sales_Extended_user4,sales_extended,model_crm_lead,Sales.custom_user,1,1,1,1
 sales_Extended_user5,sales_extended,model_crm_lead,Sales.custom_manager,1,1,1,1
 sales_Extended_user6,sales_extended,model_product_template,Sales.custom_user,1,1,1,1
 sales_Extended_user7,sales_extended,model_product_template,Sales.custom_manager,1,1,1,1
+sales_data_user,sales_data,model_sale_order_team_ept,sales_team.group_sale_salesman,1,1,1,1

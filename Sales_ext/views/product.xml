@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+
         <record id="view_product_template_inherited" model="ir.ui.view">
             <field name="name">product.view.form.inherited</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
-                <field name="type" position ="before">
+                <field name="type" position ="after">
+                    <field name="is_shipping" attrs = "{'invisible':[('type','!=','service')]}"/>
                     <field name="deposit_product_id"/>
                     <field name="deposit_product_qty" attrs = "{'invisible':[('deposit_product_id','=',False)]}"/>
                 </field>
@@ -27,5 +28,5 @@
             <field name="description">6 Pack Beer</field>
             <field name="price">200</field>
         </record>
-    </data>
+
 </odoo>

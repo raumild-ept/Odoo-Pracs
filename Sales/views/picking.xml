@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_form_picking" model="ir.ui.view">
+            <field name="name">form.view.picking</field>
+            <field name="model">stock.picking.ept</field>
+            <field name="arch" type="xml">
+                <form string="Form">
+                    <header>
+                        <button name="validate_delivery_order" string="Validate" type="object"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="parent_id"/>
+                            </group>
+                            <group>
+                                <field name="state"/>
+                                <field name="sale_order_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Stock Moves">
+                                <field name="order_line_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_picking" model="ir.ui.view">
+            <field name="name">picking.tree</field>
+            <field name="model">stock.picking.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Tree">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="parent_id"/>
+                    <field name="state"/>
+                    <field name="sale_order_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_search_picking" model="ir.ui.view">
+            <field name="name">search.picking</field>
+            <field name="model">stock.picking.ept</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_picking" model="ir.actions.act_window">
+            <field name="name">Picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.ept</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create New.
+                </p>
+            </field>
+        </record>
+
+        <record id="view_tree_stock_move_ept" model="ir.ui.view">
+            <field name="name">stock.move.tree</field>
+            <field name="model">stock.move.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Tree">
+                    <field name="name"/>
+                    <field name="source_location_id"/>
+                    <field name="destination_location_id"/>
+                    <field name="qty_to_deliver"/>
+                </tree>
+            </field>
+        </record>
+
+
+</odoo>

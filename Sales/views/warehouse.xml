@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_form_warehouse" model="ir.ui.view">
+            <field name="name">form.view.warehouse</field>
+            <field name="model">stock.warehouse.ept</field>
+            <field name="arch" type="xml">
+                <form string="FOrm">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="short_code"/>
+                                <field name="stock_location_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_warehouse" model="ir.ui.view">
+            <field name="name">warehouse.tree</field>
+            <field name="model">stock.warehouse.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Tree">
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="short_code"/>
+                    <field name="stock_location_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_search_warehouse" model="ir.ui.view">
+            <field name="name">search.warehouse</field>
+            <field name="model">stock.warehouse.ept</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="short_code"/>
+                    <field name="stock_location_id"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_warehouse" model="ir.actions.act_window">
+            <field name="name">Warehouse</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.warehouse.ept</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create New.
+                </p>
+            </field>
+        </record>
+
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--        <record id="view_form_tax_ept" model="ir.ui.view">-->
+<!--            <field name="name">form.tax.ept</field>-->
+<!--            <field name="model">account.tax.ept</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="form">-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="name"/>-->
+<!--                                <field name="tax_use"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="tax_amount_type"/>-->
+<!--                                <field name="tax_value"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="view_tree_tax_ept" model="ir.ui.view">
+            <field name="name">tree.tax.ept</field>
+            <field name="model">account.tax.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Tree">
+                    <field name="name"/>
+                    <field name="tax_use"/>
+                    <field name="tax_amount_type"/>
+                    <field name="tax_value"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="search_tax_ept" model="ir.ui.view">
+            <field name="name">search.tax.ept</field>
+            <field name="model">account.tax.ept</field>
+            <field name="arch" type="xml">
+                <search string="search">
+                    <group expand="1" string="Group By">
+                        <filter string="Tax Use" name="tax_use" domain="[]"
+                                context="{'group_by':'tax_use'}"/>
+                        <filter string="Tax Type Field" name="tax_type" domain="[]"
+                                context="{'group_by':'tax_amount_type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_tax_ept" model="ir.actions.act_window">
+            <field name="name">Tax</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.tax.ept</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create Content
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Tax" id="menu_tax_ept" parent="menu_sales_management" action="action_tax_ept"/>
+
+</odoo>

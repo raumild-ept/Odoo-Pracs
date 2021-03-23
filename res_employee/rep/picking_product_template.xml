@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_picking_template_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="products" t-as="p">
+                    <br/>
+                    <table>
+                        <tr>
+                            <th>
+                                <strong t-field="p.name"></strong>
+                            </th>
+                        </tr>
+                        <t t-foreach="docs" t-as="o">
+                            <p t-if="o.product_id.id == p.id">
+                                <tr>
+                                    <td>
+                                        <strong t-field="o.name"/>
+                                    </td>
+                                    <t t-foreach="o.move_line_ids_without_package" t-as="ml">
+                                        <td class="text-right" text-align="right" margin="left">
+                                            <div class="text-right" text-align="right" margin="left">
+                                            <p t-if="ml.product_id.id == p.id" >
+                                            <strong  t-field="ml.product_uom_qty"/>
+                                            </p>
+                                            </div>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </p>
+                        </t>
+                    </table>
+                </t>
+                <!--                <t t-foreach="docs" t-as="o">-->
+                <!--                    <div class="page">-->
+                <!--                            <table class="table table-sm" t-if="o.move_line_ids and o.move_ids_without_package">-->
+                <!--                                <thead>-->
+                <!--                                    <tr>-->
+                <!--                                        <th name="th_product">-->
+                <!--                                            <strong>Product</strong>-->
+                <!--                                        </th>-->
+                <!--                                        <th name="th_quantity">-->
+                <!--                                            <strong>Quantity</strong>-->
+                <!--                                        </th>-->
+                <!--                                        <th>-->
+                <!--                                            <strong>Picking</strong>-->
+                <!--                                        </th>-->
+                <!--                                    </tr>-->
+                <!--                                </thead>-->
+                <!--                                <tbody>-->
+                <!--                                    <t t-foreach="o.move_ids_without_package" t-as="move">-->
+                <!--                                        &lt;!&ndash; In case you come across duplicated lines, ask NIM or LAP &ndash;&gt;-->
+                <!--                                        <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)" t-as="ml">-->
+                <!--                                            <tr>-->
+                <!--                                                <td>-->
+                <!--                                                    <span t-field="ml.product_id.display_name"/><br/>-->
+                <!--                                                    <span t-field="ml.product_id.description_picking"/>-->
+                <!--                                                </td>-->
+                <!--                                                <td>-->
+                <!--                                                    <span t-if="o.state != 'done'" t-field="ml.product_uom_qty"/>-->
+                <!--                                                    <span t-if="o.state == 'done'" t-field="ml.qty_done"/>-->
+                <!--                                                    <span t-field="ml.product_uom_id" groups="uom.group_uom"/>-->
+
+                <!--                                                </td>-->
+                <!--                                                <td>-->
+                <!--                                                    <span t-field="o.name" class="mt0 float-left"/>-->
+                <!--                                                </td>-->
+                <!--                                            </tr>-->
+                <!--                                        </t>-->
+                <!--                                    </t>-->
+                <!--                                  </tbody>-->
+                <!--                            </table>-->
+                <!--                    </div>-->
+                <!--                </t>-->
+            </t>
+        </t>
+    </template>
+</odoo>

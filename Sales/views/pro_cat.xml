@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+        <record id = "view_tree_product_category" model = "ir.ui.view">
+            <field name = "name">tree.product.category</field>
+            <field name="model">product.category.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id = "view_form_product_category" model = "ir.ui.view">
+            <field name = "name">form.product.category</field>
+            <field name="model">product.category.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                             <field name="name"/>
+                            <field name="parent_id" domain = "[('parent_id','=',False)]"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_product_category" model="ir.actions.act_window">
+            <field name="name">Product Category</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="res_model">product.category.ept</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[]</field>
+        </record>
+
+</odoo>

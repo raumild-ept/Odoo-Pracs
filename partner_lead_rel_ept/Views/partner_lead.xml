@@ -27,7 +27,6 @@
                         </div>
                         <group>
                             <group>
-                                <field name="name2"/>
                                 <field name="partner_id"/>
                                 <field name="partner_contacts_ids" widget="many2many_tags_avatar"/>
                                 <field name="total_revenue"/>

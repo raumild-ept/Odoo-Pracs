@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
         <record id="sales_extended_form_view_new" model="ir.ui.view">
             <field name="name">extender.sales_extended.form</field>
             <field name="model">sale.order</field>
@@ -11,6 +10,7 @@
                 </field>
             </field>
         </record>
+
         <record id="sales_extended_form_view_new_2" model="ir.ui.view">
             <field name="name">extender.sales_extended.form</field>
             <field name="model">sale.order</field>
@@ -20,15 +20,27 @@
                    <button name="manage_deposit" string ="Manage Deposit" type="object"/>
                    <button name="review_order_lines" string="Reviews" type="object"/>
                    <button name="confirm_and_validate" string="Confirm And Validate" type="object"/>
+                   <button name="mail_message" string="Send Message" type="object"/>
+
+                    <button name="action_open_sales_data_wizard" type="object" string="Sales Data"/>
+
                </xpath>
                 <field name="lead_id" position="after">
                     <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="profit_percentage"/>
+                    <field name="profit_margin"/>
+                    <field name="product_tmpl_ids" widget="many2many_tags"/>
                 </field>
                 <xpath expr="//page[@name='order_lines']//tree" position="inside">
-                        <field name = "warehouse_manual_id"/>
+                        <field name="warehouse_manual_id"/>
+                        <field name="profit_percentage"/>
+                        <field name="profit_margin"/>
                 </xpath>
             </field>
         </record>
+
+        <menuitem id="menu_sales_extended_root" name="Sales Ext" web_icon="Sales_ext,static/description/icon.png"/>
+        <menuitem id="menu_base" parent="menu_sales_extended_root" action="sale.action_sale_config_settings"/>
 
 
         <record id="view_sale_order_filter_extended" model="ir.ui.view">
@@ -65,5 +77,4 @@
             <field name="amount">34.99</field>
         </record>
 
-    </data>
 </odoo>

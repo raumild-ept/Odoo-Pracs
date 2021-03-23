@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+        <record id="view_sale_order_ept_tree" model="ir.ui.view">
+            <field name="name">sale.order.ept.tree</field>
+            <field name="model">sale.orders.ept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="order_no"/>
+                    <field name="customer_id" domain="[('parent_id','=',False)]"/>
+                    <field name="invoice_customer_id"/>
+                    <field name="shipping_customer_id"/>
+                    <field name="state" widget="badge" decoration-success="state == 'Draft'"/>
+                    <field name="salesperson_id"/>
+                    <field name="sale_order_date"/>
+                    <field name="total_weight"/>
+                    <field name="warehouse_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sale_order_ept_form" model="ir.ui.view">
+            <field name="name">sale.order.ept.form</field>
+            <field name="model">sale.orders.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button name="confirm_sale_order" string="Confirm Sale Order" type="object"/>
+                        <button name="list_age_equal" string="Age 20" type="object"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="picking_ids_list" type="object" class="oe_stat_button"
+                                    icon="fa-users">
+                                <field name="picks_count" widget="statinfo" string="Picks"/>
+                            </button>
+                            <button name="stock_moves_list" type="object" class="oe_stat_button"
+                                    icon="fa-list">
+                                <field name="moves_count" widget="statinfo" string="Stock Moves"/>
+                            </button>
+
+                        </div>
+                        <group>
+                            <group>
+                                <field name="order_no"/>
+                                <field name="customer_id" domain="[('parent_id','=',False)]"/>
+                                <field name="invoice_customer_id"
+                                       domain="[('parent_id','=',customer_id),('address_type','=','Invoice')]"
+                                />
+                                <field name="shipping_customer_id"
+                                       domain="[('parent_id','=',customer_id),('address_type','=','Shipping')]"
+                                />
+                            </group>
+                            <group>
+                                <field name="salesperson_id"/>
+                                <field name="sale_order_date"/>
+                                <field name="total_weight"/>
+                                <field name="total_volume"/>
+                                <field name="warehouse_id"/>
+                                <field name="total_tax"/>
+                                <field name="total_amount"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Order Lines">
+                                <field name="order_line_ids" context="{'form_view_ref':'Sales.view_order_line_form_by_context'}">
+<!--                                    <form>-->
+<!--                                        <sheet>-->
+<!--                                            <group>-->
+<!--                                                <field name="product_name_id"/>-->
+<!--                                                <field name="warehouse_id"/>-->
+<!--                                                <field name="uom_id"/>-->
+<!--                                                <field name="state"/>-->
+<!--                                                <field name="quantity"/>-->
+<!--                                                <field name="unit_price"/>-->
+<!--&lt;!&ndash;                                                <field name="subtotal_nodb"/>&ndash;&gt;-->
+<!--                                                <field name="subtotal_without_tax"/>-->
+<!--&lt;!&ndash;                                                <field name="subtotal_ondepends"/>&ndash;&gt;-->
+<!--                                                <field name="subtotal_tax"/>-->
+<!--                                                <field name="tax_ids" widget="many2many_tags"/>-->
+<!--                                            </group>-->
+<!--                                            <notebook>-->
+<!--                                                <page string="Stock moves">-->
+<!--                                                    <field name="stock_move_ids" context="{'tree_view_ref':'Sales.view_tree_stock_move_ept'}"/>-->
+<!--                                                </page>-->
+<!--                                            </notebook>-->
+<!--                                        </sheet>-->
+<!--                                    </form>-->
+                                </field>
+                            </page>
+                            <page string="Picks">
+                                <field name="picking_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sale_orders_mgmt_search" model="ir.ui.view">
+            <field name="name">sale.orders.ept.search</field>
+            <field name="model">sale.orders.ept</field>
+            <field name="arch" type="xml">
+                <search string="search">
+                    <field name="order_no"/>
+                    <field name="sale_order_date"/>
+                    <field name="customer_id"/>
+                    <group string="Group by">
+                        <filter string="Customer" name="group_by_customer_id" context="{'group_by':'customer_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="sequence_sale_order_order_no" model="ir.sequence">
+            <field name="name">sequence.order.no</field>
+            <field name="code">sale.order.no</field>
+            <field name="padding">5</field>
+            <field name="prefix">A</field>
+            <field name="suffix"/>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="action_sale_order_ept" model="ir.actions.act_window">
+            <field name="name">Sale Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.orders.ept</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new partner</p>
+            </field>
+        </record>
+</odoo>
